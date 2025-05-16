@@ -26,4 +26,4 @@ bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectFilter_j3pel")
 bus/2/effect/0/enabled = false
 bus/2/effect/1/effect = SubResource("AudioEffectDistortion_j3pel")
-bus/2/effect/1/enabled = true
+bus/2/effect/1/enabled = false

@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctns4cp67ikjd"]
+
+[ext_resource type="Script" uid="uid://dl61sfy8tpdur" path="res://scenes/backrooms/BackroomsLevel.gd" id="1_jfkba"]
+[ext_resource type="PackedScene" uid="uid://87f7vx6kqn2v" path="res://scenes/player_character/player_character.tscn" id="3_52xjm"]
+[ext_resource type="PackedScene" uid="uid://bvu20y646u6ng" path="res://scenes/backrooms/backrooms.tscn" id="3_jfkba"]
+[ext_resource type="Texture2D" uid="uid://x1alidbx67s7" path="res://textures/AllSkyFree_Sky_ColdNight_Equirect.png" id="7_shaya"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_y8lvv"]
+sample_partition_type = 2
+geometry_parsed_geometry_type = 1
+agent_max_climb = 0.5
+region_min_size = 1.0
+region_merge_size = 15.0
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_q3c5p"]
+panorama = ExtResource("7_shaya")
+
+[sub_resource type="Sky" id="Sky_y8lvv"]
+sky_material = SubResource("PanoramaSkyMaterial_q3c5p")
+
+[sub_resource type="Environment" id="Environment_f1jnu"]
+background_mode = 2
+sky = SubResource("Sky_y8lvv")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[node name="level_2" type="Node3D"]
+script = ExtResource("1_jfkba")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_52xjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1632, 1.24536, 15.2341)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_y8lvv")
+
+[node name="Sketchfab_Scene" parent="NavigationRegion3D" instance=ExtResource("3_jfkba")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f1jnu")

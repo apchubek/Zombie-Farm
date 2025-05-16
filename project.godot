@@ -25,6 +25,10 @@ ProjectMusicController="*res://addons/maaacks_menus_template/base/scenes/autoloa
 ProjectUISoundController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 DbHandler="*res://database/db_handler.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/maaacks_menus_template/plugin.cfg")
