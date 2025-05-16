@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5at7b1sx2x4g"]
+
+[ext_resource type="PackedScene" uid="uid://ckexea6mo1mbn" path="res://models/electricity_box/electric_box.glb" id="1_atv7h"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_atv7h")]

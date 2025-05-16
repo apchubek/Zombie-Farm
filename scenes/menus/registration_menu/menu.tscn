@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs8knjtp8jm6y"]
+
+[ext_resource type="Script" uid="uid://bam8krar0yadu" path="res://scenes/menus/registration_menu/menu.gd" id="1_ym518"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_fqjvt"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ym518")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 509.0
+texture = SubResource("ImageTexture_fqjvt")
+
+[node name="UI_Container" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Form" type="VBoxContainer" parent="UI_Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI_Container/Form"]
+layout_mode = 2
+text = "Добро пожаловать!"
+
+[node name="LoginLabel" type="Label" parent="UI_Container/Form"]
+layout_mode = 2
+text = "Логин"
+
+[node name="LoginInput" type="LineEdit" parent="UI_Container/Form"]
+layout_mode = 2
+
+[node name="PasswordLabel" type="Label" parent="UI_Container/Form"]
+layout_mode = 2
+text = "Пароль"
+
+[node name="PasswordInput" type="LineEdit" parent="UI_Container/Form"]
+layout_mode = 2
+secret = true
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="UI_Container/Form"]
+layout_mode = 2
+
+[node name="RegisterButton" type="Button" parent="UI_Container/Form/ButtonsContainer"]
+layout_mode = 2
+text = "Регистрация"
+
+[node name="LoginButton" type="Button" parent="UI_Container/Form/ButtonsContainer"]
+layout_mode = 2
+text = "Вход"
+
+[node name="MessageLabel" type="Label" parent="UI_Container/Form"]
+layout_mode = 2

@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://87f7vx6kqn2v"]
+
+[ext_resource type="Script" uid="uid://baphoivu74gbo" path="res://scenes/player_character/player_character.gd" id="1_m2hx6"]
+[ext_resource type="Script" uid="uid://dqtqqno4nj6e4" path="res://scenes/player_character/flash_light.gd" id="2_n46ue"]
+[ext_resource type="PackedScene" uid="uid://bxyannii213ea" path="res://scenes/player_character/ui.tscn" id="3_7n4pp"]
+[ext_resource type="Script" uid="uid://jfjufyhl4p01" path="res://scenes/player_character/weapon_recoil.gd" id="3_lqfy8"]
+[ext_resource type="PackedScene" uid="uid://b33unyoqwneje" path="res://scenes/glock17/glock_17.tscn" id="3_tdo6e"]
+[ext_resource type="Script" uid="uid://dui02nrucrbyc" path="res://scenes/player_character/hand.gd" id="5_4l8wl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yqrqw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m2hx6"]
+
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("raycast")]
+collision_layer = 33
+collision_mask = 49
+script = ExtResource("1_m2hx6")
+raycast = NodePath("camera_pivot/camera_body/Camera3D/RayCast3D")
+
+[node name="FlashLightPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="FlashLight" type="SpotLight3D" parent="FlashLightPivot"]
+visible = false
+shadow_enabled = true
+spot_range = 87.0
+script = ExtResource("2_n46ue")
+
+[node name="camera_pivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="camera_body" type="Marker3D" parent="camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="camera_pivot/camera_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="FlashLightRemoteTransform" type="RemoteTransform3D" parent="camera_pivot/camera_body/Camera3D"]
+remote_path = NodePath("../../../../FlashLightPivot")
+
+[node name="RayCast3D" type="RayCast3D" parent="camera_pivot/camera_body/Camera3D"]
+target_position = Vector3(0, 0, -50)
+collision_mask = 129
+
+[node name="weapon_recoil" type="Node3D" parent="camera_pivot"]
+script = ExtResource("3_lqfy8")
+
+[node name="hand" type="Node3D" parent="camera_pivot/weapon_recoil"]
+script = ExtResource("5_4l8wl")
+sway_multiplier = 6
+rotation_multiplier = 10
+
+[node name="glock17" parent="camera_pivot/weapon_recoil/hand" instance=ExtResource("3_tdo6e")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yqrqw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_m2hx6")
+
+[node name="ui" parent="." instance=ExtResource("3_7n4pp")]
