@@ -8,6 +8,9 @@ var current_player_id : int = -1
 # Путь к базе данных (user:// - для записи данных)
 var db_path : String = "res://database/data_base.db"
 
+var thread : Thread = Thread.new()
+var thread_kills : Thread = Thread.new()
+
 func _init() -> void:
 	db.path = db_path
 	
@@ -91,7 +94,7 @@ func insert_default_achievements():
 			VALUES ('%s', '%s');
 		""" % [a["name"], a["description"]])
 
-func update_total_score(points: int) -> void:
+func update_total_score_kills(points: int, kills : int) -> void:
 	if current_player_id == -1:
 		print("Игрок не авторизован — очки не начисляются.")
 		return
@@ -109,8 +112,11 @@ func update_total_score(points: int) -> void:
 		# Создаём новую запись, если игрока ещё нет
 		db.query("INSERT INTO records (player_id, score, date) VALUES (%d, %d, '%s');" %
 			[current_player_id, points, Time.get_datetime_string_from_system()])
+	
+	check_achievements(kills)
 
-
+func update_total_score_kills_thread(points : int, kills : int) -> void:
+	thread.start(update_total_score_kills.bind(points, kills))
 
 func register_player(login: String, password: String) -> bool:
 	if login.is_empty() or password.is_empty():
@@ -137,6 +143,7 @@ func login_player(login: String, password: String) -> bool:
 		current_player_id = db.query_result[0]["player_id"]
 		return true
 	return false
+
 func check_achievements(kills: int) -> void:
 	if current_player_id == -1:
 		print("Игрок не авторизован")
@@ -150,7 +157,7 @@ func check_achievements(kills: int) -> void:
 
 	for milestone_kills in kill_milestones.keys():
 		if kills >= milestone_kills:
-			var name = kill_milestones[milestone_kills]
+			var _name = kill_milestones[milestone_kills]
 			db.query("""
 				SELECT achievement.achievement_id
 				FROM achievement
@@ -158,7 +165,7 @@ func check_achievements(kills: int) -> void:
 				ON achievement.achievement_id = player_achievement.achievement_id
 				AND player_achievement.player_id = %d
 				WHERE achievement.name = '%s' AND player_achievement.achievement_id IS NULL;
-			""" % [current_player_id, name])
+			""" % [current_player_id, _name])
 
 			if db.query_result.size() > 0:
 				var achievement_id = db.query_result[0]["achievement_id"]

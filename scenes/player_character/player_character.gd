@@ -14,8 +14,6 @@ class_name Player
 
 @export var raycast : RayCast3D
 
-
-
 var health = max_health:
 	set(value):
 		health = value

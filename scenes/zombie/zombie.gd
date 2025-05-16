@@ -3,6 +3,8 @@ extends CharacterBody3D
 @export var max_health : float = 125
 @export var dmg : float = 10
 @export var collision_shape : CollisionShape3D
+@export var skeleton : Skeleton3D
+@export var head_attachment : BoneAttachment3D
 
 @export var moaning_sounds : AudioStreamPlayer3D
 @export var death_sound : AudioStreamPlayer3D
@@ -11,7 +13,6 @@ extends CharacterBody3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var zombie_mesh: MeshInstance3D = $model/zombie_low_poly_animated/Armature/Skeleton3D/Zombie
 @onready var area_3d: Area3D = $Area3D
-
 
 enum target_types {player, tower}
 
@@ -23,6 +24,7 @@ var speed : float = 3.0
 
 var is_dead : bool = false
 var is_attacking : bool = false
+var is_spawning : bool = true
 
 var path : Vector3
 
@@ -31,6 +33,9 @@ var hitboxes : Array
 
 var random_tick : int = 30
 var tick : int = 1
+
+func _init() -> void:
+	visible = false
 
 func _ready() -> void:
 	for x in 3:
@@ -48,9 +53,13 @@ func _ready() -> void:
 	animation_tree.set(&"parameters/die_blend/blend_amount", 0.0)
 	if navigation_agent_3d: navigation_agent_3d.velocity_computed.connect(_set_computed_velocity)
 	
+	animation_tree.animation_finished.connect(reset_state)
+	
+	animation_tree[&"parameters/spawn_animation/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	visible = true
 
 func _physics_process(_delta: float) -> void:
-	if is_dead:
+	if is_dead or is_spawning:
 		return
 	
 	if tick == 0:
@@ -115,17 +124,33 @@ func get_hit(damage : float = 0.0, type = 1):
 	
 	if type == 0:
 		health -= health + 1
-	
-	health -= damage
+	else:
+		health -= damage
 	
 	if health < 0:
 		die()
+	
+	if type == 0:
+		if skeleton:
+			var head_id : int = skeleton.find_bone('head')
+			
+			if head_id:
+				if head_attachment:
+					head_attachment.queue_free()
+					await get_tree().physics_frame
+				skeleton.set_bone_pose_scale(head_id, Vector3.ZERO)
 
 func die():
 	if death_sound:
 		death_sound.play()
 	for hitbox in hitboxes:
 		hitbox.queue_free()
+	
+	Global.score += 100
+	Global.killed_zombie += 1
+	
+	if skeleton:
+		skeleton.physical_bones_start_simulation()
 	
 	if animation_tree:
 		var tween : Tween = get_tree().create_tween()
@@ -161,7 +186,6 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 func attack():
 	is_attacking = true
 	animation_tree[&"parameters/attack_shot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-	animation_tree.animation_finished.connect(reset_attack_state, 4)
 	
 	await get_tree().create_timer(0.6, false).timeout
 	
@@ -173,6 +197,8 @@ func attack():
 		
 		attack_target.get_hit(dmg * dmg_mult)
 
-func reset_attack_state(anim : String):
+func reset_state(anim : String):
 	if anim == "animation_library/Attack1":
 		is_attacking = false
+	if anim == "animation_library/Death1":
+		is_spawning = false
