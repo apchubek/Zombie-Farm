@@ -6,6 +6,8 @@ extends CharacterBody3D
 @export var skeleton : Skeleton3D
 @export var head_attachment : BoneAttachment3D
 
+@export var disabled: bool = false
+
 @export var moaning_sounds : AudioStreamPlayer3D
 @export var death_sound : AudioStreamPlayer3D
 
@@ -13,6 +15,7 @@ extends CharacterBody3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var zombie_mesh: MeshInstance3D = $model/zombie_low_poly_animated/Armature/Skeleton3D/Zombie
 @onready var area_3d: Area3D = $Area3D
+
 
 enum target_types {player, tower}
 
@@ -34,10 +37,16 @@ var hitboxes : Array
 var random_tick : int = 30
 var tick : int = 1
 
-func _init() -> void:
+func _enter_tree() -> void:
+	if disabled:
+		return
 	visible = false
 
+
 func _ready() -> void:
+	if disabled:
+		return
+	
 	for x in 3:
 		await get_tree().physics_frame
 	
@@ -59,6 +68,9 @@ func _ready() -> void:
 	visible = true
 
 func _physics_process(_delta: float) -> void:
+	if disabled:
+		return
+	
 	if is_dead or is_spawning:
 		return
 	

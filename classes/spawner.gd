@@ -15,7 +15,6 @@ func _ready() -> void:
 	
 	add_sibling(zombie_node, true)
 	add_child(timer)
-	add_child(zombie_node)
 	
 	timer.one_shot = false
 	timer.wait_time = spawn_per_sec

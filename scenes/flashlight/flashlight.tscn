@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgmpck1dgtts"]
+
+[sub_resource type="GDScript" id="GDScript_0kh7f"]
+script/source = "extends SpotLight3D
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed(\"flashlight\"):
+		visible = !visible
+"
+
+[node name="Flashlight" type="SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 315.0
+script = SubResource("GDScript_0kh7f")

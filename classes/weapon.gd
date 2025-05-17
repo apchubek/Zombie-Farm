@@ -44,9 +44,6 @@ func _ready() -> void:
 	timer.wait_time = 60.0  / fire_rate
 	timer.one_shot = true
 	
-	player = owner
-	raycast = owner.raycast
-	
 	animation_tree.animation_finished.connect(func (animation : String):
 		if animation in [reload_anim, reload_fast_anim]:
 			is_reloading = false

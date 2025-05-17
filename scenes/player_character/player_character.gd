@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
+@export var ui_enabled : bool = true
+@export var ui : CanvasLayer
 @export var max_health : = 100
 @export var sens : float = 1.0 :
 	set(value):
@@ -11,8 +13,18 @@ class_name Player
 
 @onready var camera_pivot: Marker3D = $camera_pivot
 @onready var camera_3d: Camera3D = $camera_pivot/camera_body/Camera3D
+@onready var hand: Node3D = $camera_pivot/weapon_recoil/hand
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var raycast : RayCast3D
+@export var interact_raycast : RayCast3D
+
+@export var weapons : Dictionary = {
+	"glock17":{
+		'add_with_spawn' : true,
+		"scene_path": "res://scenes/glock17/glock_17.tscn"
+	}
+}
 
 var health = max_health:
 	set(value):
@@ -28,6 +40,35 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	sens = sens
+	if animation_player:
+		animation_player.play(&'appear_anim')
+	
+	sens = AppSettings.get_config_input_events('MouseSensitivity', 1.0)
+	
+	Global.tower_health_changed.connect(func check_lose(_health : int):
+		if _health <= 0:
+			animation_player.play(&"level_1_lose")
+			animation_player.process_mode = Node.PROCESS_MODE_ALWAYS
+			
+			process_mode = Node.PROCESS_MODE_DISABLED
+			set_process_input(false)
+		)
+	animation_player.animation_finished.connect(func change_scene(animation_name : StringName):
+		if animation_name == &"level_1_lose":
+			get_tree().change_scene_to_file("res://scenes/locations/level_2.tscn")
+		)
+	
+	if ui:
+		ui.change_visibility_game_control(ui_enabled)
+	
+	for item in weapons:
+		if weapons[item].add_with_spawn:
+			var instance = load(weapons[item].scene_path).instantiate()
+			
+			instance.player = self
+			instance.raycast = raycast
+			
+			hand.add_child(instance, true)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -54,6 +95,25 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 0
 
 	move_and_slide()
+	
+	if not interact_raycast:
+		return
+	
+	if interact_raycast.is_colliding():
+		var collider : PhysicsBody3D = interact_raycast.get_collider()
+		
+		if collider is Interactable:
+			if ui :
+				ui.procces_change_interact_hint_visibility(collider.active)
+			
+			if Input.is_action_just_pressed(&"interact"):
+				collider.interact()
+		else:
+			if ui:
+				ui.procces_change_interact_hint_visibility(false)
+	else:
+		if ui:
+			ui.procces_change_interact_hint_visibility(false)
 
 func get_hit(dmg : float):
 	health -= dmg

@@ -19,7 +19,7 @@ const SYSTEM_BUS_NAME_PREFIX = "_"
 static var default_action_events : Dictionary
 static var initial_bus_volumes : Array
 
-static func get_config_input_events(action_name : String, default = null) -> Array:
+static func get_config_input_events(action_name : String, default = null) -> Variant:
 	return Config.get_config(INPUT_SECTION, action_name, default)
 
 static func set_config_input_events(action_name : String, inputs : Array) -> void:

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://cca3ohv16peeb"]
+
+[ext_resource type="Texture2D" uid="uid://cun7wmhf8455m" path="res://textures/mainMenuPicture.png" id="1_0bpdh"]
+[ext_resource type="Script" uid="uid://qhuwiirgfbjx" path="res://scenes/credits.gd" id="1_0ctdu"]
+[ext_resource type="AudioStream" uid="uid://dqrctwivpt2ja" path="res://sounds/music/mainMenuDrip.mp3" id="2_2ckv8"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ctdu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0bpdh")
+expand_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2ckv8")
+autoplay = true
+bus = &"Music"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center][shake]
+THANKS FOR PLAYING
+[rainbow][wave] ZOMBIE FARM
+[tornado]CUMPOT[/tornado]
+[img=256]res://textures/logo.jpeg[/img]"
+horizontal_alignment = 1
+vertical_alignment = 1

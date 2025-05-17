@@ -1,30 +1,153 @@
-[gd_scene load_steps=9 format=3 uid="uid://87f7vx6kqn2v"]
+[gd_scene load_steps=12 format=3 uid="uid://87f7vx6kqn2v"]
 
 [ext_resource type="Script" uid="uid://baphoivu74gbo" path="res://scenes/player_character/player_character.gd" id="1_m2hx6"]
-[ext_resource type="Script" uid="uid://dqtqqno4nj6e4" path="res://scenes/player_character/flash_light.gd" id="2_n46ue"]
+[ext_resource type="PackedScene" uid="uid://bgmpck1dgtts" path="res://scenes/flashlight/flashlight.tscn" id="2_lqfy8"]
 [ext_resource type="PackedScene" uid="uid://bxyannii213ea" path="res://scenes/player_character/ui.tscn" id="3_7n4pp"]
 [ext_resource type="Script" uid="uid://jfjufyhl4p01" path="res://scenes/player_character/weapon_recoil.gd" id="3_lqfy8"]
-[ext_resource type="PackedScene" uid="uid://b33unyoqwneje" path="res://scenes/glock17/glock_17.tscn" id="3_tdo6e"]
 [ext_resource type="Script" uid="uid://dui02nrucrbyc" path="res://scenes/player_character/hand.gd" id="5_4l8wl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yqrqw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m2hx6"]
 
-[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("raycast")]
+[sub_resource type="Animation" id="Animation_4l8wl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera_pivot/camera_body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("screen_darkenen:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_brvwx"]
+resource_name = "appear_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -0.5),
+"update": 0,
+"values": [Vector3(0, -0.2, 0), Vector3(0, 0.75, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera_pivot/camera_body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -0.5),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("screen_darkenen:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lqfy8"]
+resource_name = "level_1_lose"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector3(0, 0.75, 0), Vector3(0, -0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera_pivot/camera_body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("screen_darkenen:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_brvwx"]
+_data = {
+&"RESET": SubResource("Animation_4l8wl"),
+&"appear_anim": SubResource("Animation_brvwx"),
+&"level_1_lose": SubResource("Animation_lqfy8")
+}
+
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("ui", "raycast", "interact_raycast")]
 collision_layer = 33
 collision_mask = 49
 script = ExtResource("1_m2hx6")
+ui = NodePath("ui")
 raycast = NodePath("camera_pivot/camera_body/Camera3D/RayCast3D")
+interact_raycast = NodePath("camera_pivot/camera_body/Camera3D/interact_raycast")
 
 [node name="FlashLightPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
-[node name="FlashLight" type="SpotLight3D" parent="FlashLightPivot"]
-visible = false
-shadow_enabled = true
-spot_range = 87.0
-script = ExtResource("2_n46ue")
+[node name="Flashlight" parent="FlashLightPivot" instance=ExtResource("2_lqfy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="camera_pivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -42,6 +165,10 @@ remote_path = NodePath("../../../../FlashLightPivot")
 target_position = Vector3(0, 0, -50)
 collision_mask = 129
 
+[node name="interact_raycast" type="RayCast3D" parent="camera_pivot/camera_body/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 129
+
 [node name="weapon_recoil" type="Node3D" parent="camera_pivot"]
 script = ExtResource("3_lqfy8")
 
@@ -50,12 +177,26 @@ script = ExtResource("5_4l8wl")
 sway_multiplier = 6
 rotation_multiplier = 10
 
-[node name="glock17" parent="camera_pivot/weapon_recoil/hand" instance=ExtResource("3_tdo6e")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_yqrqw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_m2hx6")
 
 [node name="ui" parent="." instance=ExtResource("3_7n4pp")]
+layer = 0
+
+[node name="screen_darkenen" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_brvwx")
+}

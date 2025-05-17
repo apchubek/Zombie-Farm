@@ -1,0 +1,40 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://bk8bj1sver5sp"]
+
+[ext_resource type="Texture2D" uid="uid://bbq6a6tpb8u57" path="res://models/backrooms/backrooms_another_level_2.png" id="1_0ifke"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tl21"]
+resource_name = "LiftBake"
+cull_mode = 2
+albedo_texture = ExtResource("1_0ifke")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vmhoi"]
+_surfaces = [{
+"aabb": AABB(-0.75872, -1.45548, -0.0317329, 1.51728, 2.39578, 0.146034),
+"format": 34896613377,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABQAEAAYABQAGAAcABwACAAUACAAAAAIABwAIAAIACQADAAAACAAJAAAACQAKAAMABwALAAgABwAMAAsADQALAAwACAALAA4ADQAOAAsACAAOAA8ADwAOAA0ADwAJAAgAEAAKAAkADwAQAAkAEAARAAoADwANABIAEwARABAAEwAUABEAFQATABAAFQAUABMAFQAQAA8AFQAWABQAFwAVAA8AFwAWABUAFwAPABIAFwAYABYAEgAYABcAEgAZABgA"),
+"name": "LiftBake",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 26,
+"vertex_data": PackedByteArray("AAD//wAAAAAAAHP5OyoAAAAAc/kAAAAAAAD//zsqAAAAAAAAOyoAAAAAAAAAAAAAcgwAADsqAAByDAAAAAAAAHIMc/kAAAAAcgz//wAAAAByDP//OyoAAHIMc/n//wAAcgwAAP//AACZ8wAA//8AAJnzc/n//wAAmfNz+QAAAACZ8///AAAAAJnz//87KgAAmfMAAAAAAAD/////AAAAAP////87KgAA//9z+QAAAAD//3P5OyoAAP//AAAAAAAA//8AADsqAACZ8wAAOyoAAA==")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "Sketchfab_Scene_Object_3"
+_surfaces = [{
+"aabb": AABB(-0.75872, -1.45548, -0.0317329, 1.51728, 2.39578, 0.146034),
+"attribute_data": PackedByteArray("1angqS+raajVqWmoL6vgqS+rl3DVqZdwTaA84HyoaahNoGmofKg84CWP8ldrjK8Da4zyVyWPrwNrjHkBJY95AVNaeQFTWq8Dlld5AZZXrwNTWvJXllfyV+aaD8FAnEu/5ppLv0CcD8FBjaHgKVtejClboeBBjV6MuJKR3+aaS7+4kku/5pqR302gaah8qJdwTaCXcHyoaah8qOCp1akOcnyoDnLVqeCp1amXcHyol3B8qKSr1angqXyo4KnVqaSrfKjqy9Wp6st8qKvN1amrzUCcDcGZnUu/QJxLv5mdDcE="),
+"format": 34896613399,
+"index_count": 108,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgABAAQAAgAEAAUABgAHAAgABgAJAAcACgALAAwACgANAAsADQAOAAsADQAPAA4ACwAOABAACwAQABEAEQAQABIAEQASABMAFAARABMAFAATABUAFgAXABgAFgAZABcAGgAbABwAGgAdABsAHgAfACAAHgAhAB8AIgAjACQAIgAlACMAJgAnACgAJgApACcAKAAnACoAKAAqACsALAAtAC4ALAAvAC0AMAAvACwAMAAxAC8AMgAxADAAMgAzADEANAA1ADYANAA3ADUA"),
+"material": SubResource("StandardMaterial3D_0tl21"),
+"name": "LiftBake",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 56,
+"vertex_data": PackedByteArray("AAD//wAA/z8AAHP5Oyr/PwAAc/kAAP8/AAD//zsq/z8AAAAAOyr/PwAAAAAAAP8/cgwAAAAAAAByDHP5//8AAHIMc/kAAAAAcgwAAP//AAD//wAAAAAAAJnzc/kAAAAAmfMAAAAAAAD//3P5AAAAAJnz//8AAAAA/////wAAAAByDP//AAAAAHIMc/kAAAAAAAD//wAAAAAAAHP5AAAAAHIMAAAAAAAAAAAAAAAAAAAAAAAAAACqKnIMAAA7KqoqcgwAAAAAqioAAAAAOyqqKpnzAAD//wAAcgxz+f//AAByDAAA//8AAJnzc/n//wAAcgxz+QAAqiqZ83P5//+qKpnzc/kAAKoqcgxz+f//qiqZ83P5AAD/P5nzAAD///8/mfMAAAAA/z+Z83P5////P///AAAAAAAA//9z+TsqAAD//3P5AAAAAP//AAA7KgAA/////zsqAAD/////AAAAAHIM//8AAKoqAAD//zsqqioAAP//AACqKnIM//87KqoqmfP//wAAqiqZ8///OyqqKv////8AAKoq/////zsqqiqZ8wAAAACqKv//AAA7Kqoq//8AAAAAqiqZ8wAAOyqqKv9/////f////3////9/////f////3////+//3//v/9//7//f/+//3////9/////f////3////9/////f////3////9/////f////3////9/////f////3+qKlTVqipU1aoqVNWqKlTV////f////3////9/////f6oqVNWqKlTVqipU1aoqVNX/f////3////9/////f////7//f/+//3//v/9//7//f/+//3//v/9/qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqKlTVqipU1aoqVNWqKlTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vmhoi")

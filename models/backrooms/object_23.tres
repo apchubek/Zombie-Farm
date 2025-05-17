@@ -1,0 +1,40 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://dvh2aaaokddne"]
+
+[ext_resource type="Texture2D" uid="uid://bbq6a6tpb8u57" path="res://models/backrooms/backrooms_another_level_2.png" id="1_gtase"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tl21"]
+resource_name = "LiftBake"
+cull_mode = 2
+albedo_texture = ExtResource("1_gtase")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dmcji"]
+_surfaces = [{
+"aabb": AABB(-1.06975, -1.57954, 0, 2.14565, 2.49287, 1e-05),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgADAAAABgAHAAMACAAHAAYACAAJAAcACgAIAAYACgAGAAsA"),
+"name": "LiftBake",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("GEw2v4mNKj8AAACAhO2Iv3XPaT8AAACAhO2Iv4mNKj8AAACAGEw2v3XPaT8AAACAGEw2v38uyr8AAACAhO2Iv38uyr8AAACAiLg0P4mNKj8AAACAiLg0P3XPaT8AAACATLeJP4mNKj8AAACATLeJP3XPaT8AAACATLeJP38uyr8AAACAiLg0P38uyr8AAACA")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "Sketchfab_Scene_Object_10"
+_surfaces = [{
+"aabb": AABB(-1.06975, -1.57954, 0, 2.14565, 2.49287, 1e-05),
+"attribute_data": PackedByteArray("aZcyP4YcZT8u5Eo/AAB9Py7kSj+HHGU/aZcyP///fD9plzI//v8/PS7kSj/+/z89RG9kPoccZT+YfaQ+AAB9P5h9pD6IHGU/RG9kPgAAfT9Eb2Q+/v8/PZh9pD7+/z89mH2kPogcZT9plzI///98P2mXMj+GHGU/mH2kPgAAfT8="),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABgAHAAgABgAJAAcACgAGAAgACgAIAAsADAANAA4ADAAPAA0A"),
+"material": SubResource("StandardMaterial3D_0tl21"),
+"name": "LiftBake",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("GEw2v4mNKj8AAACAhO2Iv3XPaT8AAACAhO2Iv4mNKj8AAACAGEw2v3XPaT8AAACAGEw2v38uyr8AAACAhO2Iv38uyr8AAACATLeJP4mNKj8AAACAiLg0P3XPaT8AAACAiLg0P4mNKj8AAACATLeJP3XPaT8AAACATLeJP38uyr8AAACAiLg0P38uyr8AAACAiLg0P4mNKj8AAACAGEw2v3XPaT8AAACAGEw2v4mNKj8AAACAiLg0P3XPaT8AAACA/////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8//////wAA/z8=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dmcji")

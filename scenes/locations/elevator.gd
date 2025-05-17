@@ -1,0 +1,13 @@
+extends Interactable
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func _init() -> void:
+	active = false
+
+func interact() -> void:
+	if active:
+		animation_player.play(&'end_animation')
+		await animation_player.animation_finished
+		
+		get_tree().change_scene_to_file('res://scenes/credits.tscn')

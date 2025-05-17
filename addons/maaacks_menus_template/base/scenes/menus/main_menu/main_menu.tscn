@@ -13,6 +13,21 @@
 [ext_resource type="Script" uid="uid://bkwlopi4qn32o" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/config_name_label.gd" id="7_j7612"]
 [ext_resource type="PackedScene" uid="uid://bwuaq87o4m22r" path="res://models/zombie/backgorund_zombie.tscn" id="11_h0dp7"]
 
+[sub_resource type="Animation" id="Animation_oseat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-16.703, 1.721, -1.056)]
+}
+
 [sub_resource type="Animation" id="Animation_fhhe7"]
 resource_name = "camera_anim"
 length = 10.0
@@ -28,21 +43,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-17.1126, 1.721, -1.05581), Vector3(-16.703, 1.721, -1.056), Vector3(-16.754, 2.056, -1.056), Vector3(-17.623, 2.001, -1.056), Vector3(-17.512, 1.94, -1.401), Vector3(-16.888, 1.703, -1.311), Vector3(-17.373, 1.709, -1.221), Vector3(-17.226, 1.546, -1.128), Vector3(-17.1198, 1.70983, -1.06042)]
-}
-
-[sub_resource type="Animation" id="Animation_oseat"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-16.703, 1.721, -1.056)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81wrs"]
@@ -141,7 +141,7 @@ anchor_right = 1.0
 offset_bottom = 67.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
-text = "Zombie_Farm-3"
+text = "Zombie Farm"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_j7612")

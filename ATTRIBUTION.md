@@ -1,18 +1,18 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+### Developers
+Apchubek
+Lakamfo (helper)
+[Apchubek w/ Link]((https://github.com/apchubek)
+[Lakamfo w/ Link](https://github.com/Lakamfo)  
 
 
 ## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()  
-Source: [Domain : webpage.html]()  
-License: [License]()
+## Game Source
+Author: [Apchubek](https://github.com/apchubek)  
+Source: [github.com](https://github.com/apchubek/Zombie-Farm)  
+License: [License](MIT)
 
 #### Godot Engine Logo
 Author: Andrea Calabró  
@@ -29,6 +29,10 @@ License: [MIT License](https://github.com/godotengine/godot/blob/master/LICENSE.
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
+
+#### Godot SQLITE
+Author: [Piet Bronders & Jeroen De Geeter](https://github.com/torvalds)  
+License: [MIT](https://github.com/godotengine/godot/blob/master/LICENSE.txt)
 
 #### Godot Menus Template
 Author: [Marek Belski](https://github.com/Maaack/Godot-Menus-Template/graphs/contributors)  

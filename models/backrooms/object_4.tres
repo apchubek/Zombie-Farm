@@ -1,0 +1,41 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=3 uid="uid://huk66gepj1f6"]
+
+[ext_resource type="Texture2D" uid="uid://dlrgpodoych2l" path="res://models/backrooms/backrooms_another_level_0.png" id="1_r5avx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s33si"]
+resource_name = "CarpetBake4"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_r5avx")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4ietw"]
+_surfaces = [{
+"aabb": AABB(-32.5698, 0, -32.5698, 65.1397, 1e-05, 65.1397),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "CarpetBake4",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "Sketchfab_Scene_Object_0"
+_surfaces = [{
+"aabb": AABB(-32.5698, 0, -32.5698, 65.1397, 1e-05, 65.1397),
+"attribute_data": PackedByteArray(254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_s33si"),
+"name": "CarpetBake4",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4ietw")

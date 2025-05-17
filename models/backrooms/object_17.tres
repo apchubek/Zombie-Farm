@@ -1,0 +1,40 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=3 uid="uid://bgegxom0h4wik"]
+
+[ext_resource type="Texture2D" uid="uid://bv36onxj7p10k" path="res://models/backrooms/backrooms_another_level_4.png" id="1_mhgk0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5b150"]
+resource_name = "RoofBaked"
+cull_mode = 2
+albedo_texture = ExtResource("1_mhgk0")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_en5es"]
+_surfaces = [{
+"aabb": AABB(-32.58, 0, -32.58, 65.1599, 1e-05, 65.1599),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "RoofBaked",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "Sketchfab_Scene_Object_7"
+_surfaces = [{
+"aabb": AABB(-32.58, 0, -32.58, 65.1599, 1e-05, 65.1599),
+"attribute_data": PackedByteArray(254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_5b150"),
+"name": "RoofBaked",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 170, 42, 255, 255, 0, 0, 0, 0, 170, 42, 255, 255, 0, 0, 255, 255, 170, 42, 0, 0, 0, 0, 0, 0, 170, 42, 169, 170, 170, 170, 169, 170, 170, 170, 169, 170, 170, 170, 170, 170, 170, 170)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_en5es")

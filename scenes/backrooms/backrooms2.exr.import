@@ -1,0 +1,27 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://cq00dj3m53em7"
+path.bptc="res://.godot/imported/backrooms2.exr-d8d38fc2a60f713da9ae734035550e2d.bptc.ctexarray"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://scenes/backrooms/backrooms2.exr"
+dest_files=["res://.godot/imported/backrooms2.exr-d8d38fc2a60f713da9ae734035550e2d.bptc.ctexarray"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

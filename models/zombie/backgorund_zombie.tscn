@@ -380,6 +380,7 @@ shape = SubResource("ConvexPolygonShape3D_lxftk")
 
 [node name="Zombie" parent="." instance=ExtResource("1_8j5r3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.259, 0.038847, -0.31549)
+disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(258.057, 0, 0, 0, 35.4065, 0, 0, 0, 0.144022, -36.8792, -1.76865, -26.9468)
