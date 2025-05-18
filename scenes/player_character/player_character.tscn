@@ -167,7 +167,7 @@ collision_mask = 129
 
 [node name="interact_raycast" type="RayCast3D" parent="camera_pivot/camera_body/Camera3D"]
 target_position = Vector3(0, 0, -2)
-collision_mask = 129
+collision_mask = 9
 
 [node name="weapon_recoil" type="Node3D" parent="camera_pivot"]
 script = ExtResource("3_lqfy8")

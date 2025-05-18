@@ -1,4 +1,5 @@
 extends Node3D
+class_name Weapon
 
 @export_category("Stats")
 @export var damage : float = 40.0
@@ -12,6 +13,7 @@ extends Node3D
 
 @export_category("Sounds")
 @export var fire_sound : AudioStreamPlayer3D
+@export var reload_sound: AudioStreamPlayer3D
 
 @export_group("Animations")
 @export var animation_player : AnimationPlayer
@@ -67,6 +69,9 @@ func _process(_delta: float) -> void:
 		else:
 			animation_tree['parameters/reload_full_shot/request'] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		is_reloading = true
+		
+		if reload_sound:
+			reload_sound.play()
 		
 		var need_to_load : int = clip_size - clip  
 		if need_to_load > ammo:

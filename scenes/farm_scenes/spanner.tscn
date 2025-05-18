@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8hmssoa62d1a"]
+
+[ext_resource type="PackedScene" uid="uid://csk7awxkooykh" path="res://models/farm_model/help_items/spanner.glb" id="1_uhoyp"]
+[ext_resource type="Texture2D" uid="uid://cs6jdfp66b2od" path="res://textures/wrench-icon.png" id="2_fyjwn"]
+[ext_resource type="Script" uid="uid://cuc426bd8q571" path="res://classes/WayPoint.gd" id="2_jl5re"]
+[ext_resource type="Script" uid="uid://bspgkv05cn7gh" path="res://models/farm_model/help_items/spanner.gd" id="4_fyjwn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0gah"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_uhoyp")]
+
+[node name="Interactable" type="StaticBody3D" parent="." index="1"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("4_fyjwn")
+metadata/_custom_type_script = "uid://lkosv4g1exij"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" index="0"]
+shape = SubResource("BoxShape3D_v0gah")
+
+[node name="TextureRect" type="TextureRect" parent="." index="2"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fyjwn")
+expand_mode = 1
+script = ExtResource("2_jl5re")

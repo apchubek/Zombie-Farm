@@ -1,4 +1,5 @@
 extends Node3D
+class_name ZombieSpawner
 
 @export var enemy_limit : int = 50
 @export var spawn_per_sec : float = 5.0
@@ -26,7 +27,7 @@ func timer_ended():
 	if zombie_node.get_child_count() >= enemy_limit:
 		return
 	
-	var random_index : int = randi() % (spawns.size() - 1)
+	var random_index : int = randi() % (spawns.size())
 	var max_tries : int = 5
 	var tries : int = 0
 	

@@ -6,7 +6,7 @@ var db : SQLite = SQLite.new()
 var current_player_id : int = -1
 
 # Путь к базе данных (user:// - для записи данных)
-var db_path : String = "res://database/data_base.db"
+var db_path : String = "user://data_base.db"
 
 var thread : Thread = Thread.new()
 var thread_kills : Thread = Thread.new()
@@ -116,6 +116,9 @@ func update_total_score_kills(points: int, kills : int) -> void:
 	check_achievements(kills)
 
 func update_total_score_kills_thread(points : int, kills : int) -> void:
+	if thread.is_started():
+		return
+	
 	thread.start(update_total_score_kills.bind(points, kills))
 
 func register_player(login: String, password: String) -> bool:

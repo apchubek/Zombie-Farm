@@ -3,6 +3,7 @@ extends Node
 var player : Player
 var ui : CanvasLayer
 var tower : Tower
+var game_level : GameLevel
 
 var score : int = 0 : 
 	set(value):
@@ -27,6 +28,8 @@ signal update_weapon_ui
 signal update_score_ui
 @warning_ignore("unused_signal")
 signal weapon_recoil
+@warning_ignore("unused_signal")
+signal game_time_updated(hour: int)
 
 var timer : Timer = Timer.new()
 

@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var tower_health_label: Label = %tower_health_label
 @onready var ammo_label: Label = %ammo_label
 @onready var score_label: Label = %score_label
+@onready var time_label: Label = %time_label
 
 @onready var previous_health : float = get_owner().health
 @onready var blood_overlay_animation_player: AnimationPlayer = %blood_overlay_animation_player
@@ -29,6 +30,9 @@ func _ready() -> void:
 	Global.update_score_ui.connect(func update_score_health(score : int):
 		score_label.text = "score : %s" %[score]
 		)
+	Global.game_time_updated.connect(func(hour: int):
+		time_label.text = "Time : %02d:00" % hour
+)
 
 func change_visibility_game_control(_visible : bool):
 	control.visible = _visible

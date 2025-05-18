@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @export var ui_enabled : bool = true
+@export var sprint_enabled : bool = true
 @export var ui : CanvasLayer
 @export var max_health : = 100
 @export var sens : float = 1.0 :
@@ -10,6 +11,7 @@ class_name Player
 @export var move_speed : float = 5.0
 @export var gravity: float = 30.0
 @export var jump_force: float = 8.0
+@export var sprint_speed : float = 10.0
 
 @onready var camera_pivot: Marker3D = $camera_pivot
 @onready var camera_3d: Camera3D = $camera_pivot/camera_body/Camera3D
@@ -32,6 +34,7 @@ var health = max_health:
 		health_changed.emit(value)
 
 var y_velocity : float = 0.0
+var weapons_list : Array[Node3D]
 
 signal health_changed
 
@@ -67,7 +70,7 @@ func _ready() -> void:
 			
 			instance.player = self
 			instance.raycast = raycast
-			
+			weapons_list.append(instance)
 			hand.add_child(instance, true)
 
 func _input(event: InputEvent) -> void:
@@ -83,8 +86,13 @@ func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	velocity.x = direction.x * move_speed
-	velocity.z = direction.z * move_speed
+	var current_speed = move_speed
+	if sprint_enabled:
+		if Input.is_action_pressed("sprint"):
+			current_speed = sprint_speed
+
+	velocity.x = direction.x * current_speed
+	velocity.z = direction.z * current_speed
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta

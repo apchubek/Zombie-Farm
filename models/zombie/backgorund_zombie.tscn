@@ -296,6 +296,7 @@ albedo_color = Color(0.0119918, 0, 0.295015, 1)
 material = SubResource("StandardMaterial3D_o5p4a")
 
 [node name="BackgorundZombie" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0088923, 0.0119405, -0.000659466)
 script = ExtResource("1_o5p4a")
 
 [node name="Bldg_Base_1" type="MeshInstance3D" parent="."]
